@@ -28,9 +28,9 @@ namespace challengeApp1
             }
         }
 
-        public void AddScore(int number)
+        public void AddScore(int result)
         {
-            this.score.Add(number);
+            this.score.Add(result);
         }
     }
 }
