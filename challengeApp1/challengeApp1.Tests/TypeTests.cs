@@ -3,38 +3,36 @@
     public class TypeTests
     {
         [Test]
-        public void MethosGetStatisticsMin()
+        public void WhenEmployeeCollectGradesTestShouldReturnStatistics()
         {
-            var employee = new Employee1("Adam", "XYZ");
-
-            employee.AddGrade(33);
-            employee.AddGrade(45);
-            employee.AddGrade(21);
-
-            var ststistics = employee.GetStatistics();
-
-            Assert.AreEqual(21, ststistics.Min);
-            Assert.AreEqual(45, ststistics.Max);
-            Assert.AreEqual(33, ststistics.Average);
-
-        }
-
-        [Test]
-        public void MethosGetStatisticsMax()
-        {
-            var employee = new Employee1("Adam", "XYZ");
-
-            employee.AddGrade(12);
-            employee.AddGrade(-10);
-            employee.AddGrade(31);
+            var employee = new Employee1("Marcin", "XYZ");
+            employee.AddGrade("C");
+            employee.AddGrade("45");
+            employee.AddGrade(132);
+            employee.AddGrade(34);
 
             var statistics = employee.GetStatistics();
 
-            Assert.AreEqual(-10, statistics.Min);
-            Assert.AreEqual(31, statistics.Max);
-            Assert.AreEqual(11, statistics.Average);
-        }
+            Assert.AreEqual(34, statistics.Min);
+            Assert.AreNotEqual(132, statistics.Max);
+            Assert.AreNotEqual('c', statistics.AverageLetter);
 
+        }
+        [Test]
+        public void StatisticsTestWhenCharAsAverageLetterThenTestIsCorrect()
+        {
+            var employee = new Employee1("Michał", "XYZ");
+            employee.AddGrade('a');
+            employee.AddGrade('B');
+            employee.AddGrade('c');
+            employee.AddGrade('D');
+            employee.AddGrade('e');
+
+            var statistics = employee.GetStatistics();
+
+            Assert.AreNotEqual('c', statistics.AverageLetter);
+
+        }
     }
 
 }
