@@ -5,7 +5,7 @@
         [Test]
         public void WhenEmployeeCollectGradesTestShouldReturnStatistics()
         {
-            var employee = new Employee1("Marcin", "XYZ");
+            var employee = new EmployeeInMemory("Marcin", "XYZ");
             employee.AddGrade("C");
             employee.AddGrade("45");
             employee.AddGrade(132);
@@ -21,7 +21,7 @@
         [Test]
         public void StatisticsTestWhenCharAsAverageLetterThenTestIsCorrect()
         {
-            var employee = new Employee1("Michał", "XYZ");
+            var employee = new EmployeeInMemory("Marcin", "XYZ");
             employee.AddGrade('a');
             employee.AddGrade('B');
             employee.AddGrade('c');
