@@ -5,11 +5,17 @@ Console.WriteLine("Aby zobaczyć wyniki naciśni 'q' ");
 Console.WriteLine("===========================================");
 Console.WriteLine();
 
-var employee = new Employee();
+var employee = new EmployeeInFile("Marcin", "XYZ");
+employee.GradeAdded += EmployeeGradeAdded;
+
+void EmployeeGradeAdded(object sender, EventArgs args)
+{
+    Console.WriteLine("Dodano nowa ocenę");
+}
 
 try
 {
-    Employee emp = null;
+    EmployeeInFile emp = null;
     var name = emp.Surname;
 }
 catch (Exception exception)
@@ -32,7 +38,7 @@ while (true)
         break;
     }
 
-    try
+   try
     {
         employee.AddGrade(input);
     }
@@ -47,8 +53,3 @@ Console.WriteLine($"Average: {statistics.Average}");
 Console.WriteLine($"Min: {statistics.Min}");
 Console.WriteLine($"Max: {statistics.Max}");
 Console.WriteLine($"AverageLetter: {statistics.AverageLetter}");
-
-
-
-
-

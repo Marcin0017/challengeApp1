@@ -1,4 +1,6 @@
-﻿namespace challengeApp1
+﻿using static challengeApp1.EmployeeInMemory;
+
+namespace challengeApp1
 {
     public class EmployeeInFile : EmployeeBase
     {
@@ -7,12 +9,24 @@
             : base(name, surname)
         {
         }
-
+        public event GradeAddedDelegate GradeAdded;
         public override void AddGrade(float grade)
         {
             using (var writer = File.AppendText(fileName)) 
             {
-                writer.WriteLine(grade);
+                if (grade >= 0 && grade <= 100)
+                {
+                    writer.WriteLine(grade);
+
+                    if (GradeAdded != null)
+                    {
+                        GradeAdded(this, new EventArgs());
+                    }
+                }
+                else
+                {
+                    throw new Exception("invalid grade value");
+                }
             }
         }
 
