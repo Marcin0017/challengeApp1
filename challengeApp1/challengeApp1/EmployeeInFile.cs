@@ -32,22 +32,32 @@ namespace challengeApp1
 
         public override void AddGrade(int grade)
         {
-            throw new NotImplementedException();
+            float gradeAsFloat = grade;
+            this.AddGrade(gradeAsFloat);
         }
 
         public override void AddGrade(string grade)
         {
-            throw new NotImplementedException();
+            if (float.TryParse(grade, out float result))
+            {
+                this.AddGrade(result);
+            }
+            else
+            {
+                throw new Exception("String is not float");
+            }
         }
 
         public override void AddGrade(double grade)
         {
-            throw new NotImplementedException();
+            var gradeinfloat = (float)grade;
+            AddGrade(gradeinfloat);
         }
 
         public override void AddGrade(char grade)
         {
-            throw new NotImplementedException();
+            float gradeAsFloat = grade;
+            this.AddGrade(gradeAsFloat);
         }
 
         public override Statistics GetStatistics()
